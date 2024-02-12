@@ -9,7 +9,7 @@ var prevmousepos = Vector2(0,0)
 var mousepos = Vector2(0,0)
 var tovector = Vector2(0,0)
 
-var sensitivity = 5 #max is 10
+var sensitivity = 1 #max is 10
 
 func _ready():
 	pass
@@ -20,11 +20,12 @@ func _physics_process(delta):
 	tovector = mousepos - position
 	if (Input.is_action_pressed("click")):#held down first frame
 		if (firstframe and hovered):
-			Global.selected = true
+			selected = true
 			firstframe = false
 		if (selected):
 			apply_force((tovector * sensitivity)-linear_velocity, Vector2(0,0))
-			print_debug(tovector-linear_velocity)
+			#print_debug(name)
+			#print_debug(tovector-linear_velocity)
 	else:
 		firstframe = true
 		selected = false

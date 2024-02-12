@@ -1,11 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://brlq2yd7j0sou"]
+[gd_scene load_steps=4 format=3 uid="uid://brlq2yd7j0sou"]
 
 [ext_resource type="PackedScene" uid="uid://6vr2x84steb3" path="res://rigid_body_2d.tscn" id="1_5gpua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsjib"]
+size = Vector2(375.5, 694)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ekxm"]
+size = Vector2(1360.75, 393)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="RigidBody2D" parent="." instance=ExtResource("1_5gpua")]
+linear_damp = -1.0
 
 [node name="RigidBody2D2" parent="." instance=ExtResource("1_5gpua")]
+position = Vector2(253, 88)
 
 [node name="RigidBody2D3" parent="." instance=ExtResource("1_5gpua")]
+position = Vector2(354, 82)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-171, 312)
+shape = SubResource("RectangleShape2D_jsjib")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1315, 312)
+shape = SubResource("RectangleShape2D_jsjib")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(581, -12)
+shape = SubResource("RectangleShape2D_jsjib")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(637, -188)
+shape = SubResource("RectangleShape2D_1ekxm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(619, 822)
+shape = SubResource("RectangleShape2D_1ekxm")
