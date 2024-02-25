@@ -1,2 +1,11 @@
-res://node_2d.tscn
-res://rigid_body_2d.tscn
+res://scenes/node_2d.tscn
+res://scenes/rigid_body_2d.tscn
+res://scenes/node_2d 2.tscn
+res://scenes/rigid_body_2d_longa.tscn
+res://scenes/rigid_body_2d_dufoja.tscn
+res://scenes/rigid_body_2d_dika.tscn
+res://scenes/huarongdao.tscn
+res://scenes/huarongdao 2.tscn
+res://scenes/huarongdao 3.tscn
+res://scenes/main.tscn
+res://scripts/main.gd

@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://x3lw8f78y1kv"]
+
+[ext_resource type="PackedScene" uid="uid://6vr2x84steb3" path="res://scenes/rigid_body_2d.tscn" id="1_0kvws"]
+[ext_resource type="Script" path="res://scripts/huarongdao.gd" id="1_0xhyw"]
+[ext_resource type="PackedScene" uid="uid://uss325qtjrmh" path="res://scenes/rigid_body_2d_longa.tscn" id="2_tajyd"]
+[ext_resource type="PackedScene" uid="uid://b44mnxki3pnyr" path="res://scenes/rigid_body_2d_dufoja.tscn" id="3_wa0j3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsjib"]
+size = Vector2(375.719, 810.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ekxm"]
+size = Vector2(1360.75, 401.781)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tprj1"]
+size = Vector2(801, 185.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hamk2"]
+size = Vector2(222, 709)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0xhyw")
+
+[node name="RigidBody2D7" parent="." instance=ExtResource("1_0kvws")]
+position = Vector2(169, 556)
+linear_damp = -1.0
+
+[node name="RigidBody2D8" parent="." instance=ExtResource("1_0kvws")]
+position = Vector2(297, 428)
+linear_damp = -1.0
+
+[node name="RigidBody2D9" parent="." instance=ExtResource("1_0kvws")]
+position = Vector2(425, 428)
+linear_damp = -1.0
+
+[node name="RigidBody2D10" parent="." instance=ExtResource("1_0kvws")]
+position = Vector2(553, 556)
+linear_damp = -1.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1315, 312)
+shape = SubResource("RectangleShape2D_jsjib")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(804.859, 443)
+shape = SubResource("RectangleShape2D_jsjib")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(616, 821)
+shape = SubResource("RectangleShape2D_1ekxm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(392, -112.75)
+shape = SubResource("RectangleShape2D_tprj1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-6, 308)
+shape = SubResource("RectangleShape2D_hamk2")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("2_tajyd")]
+position = Vector2(169, 364)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("2_tajyd")]
+position = Vector2(553, 364)
+
+[node name="RigidBody2D4" parent="." instance=ExtResource("2_tajyd")]
+position = Vector2(169, 108)
+
+[node name="RigidBody2D5" parent="." instance=ExtResource("2_tajyd")]
+position = Vector2(553, 108)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("2_tajyd")]
+position = Vector2(361, 300)
+rotation = 1.5708
+
+[node name="RigidBody2D6" parent="." instance=ExtResource("3_wa0j3")]
+position = Vector2(361, 108)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 312.0
+offset_bottom = 92.0
+text = "waaaaaaaaaaaaa"
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 25.0
+offset_right = 312.0
+offset_bottom = 117.0
+text = "waaaaaaaaaaaaa"

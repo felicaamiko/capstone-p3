@@ -12,15 +12,17 @@ var tovector = Vector2(0,0)
 
 var normalizedtovector = Vector2(0,0)
 var sensitivity = 1 #max is 10
-var magnitude = 1
+
 var jigglecheck = 1 #set to 0 if rotation jiggles
 
 var a = 0
 var b = 0
 var c = 0
-var d = 0
 
 func _physics_process(delta):
+
+	#for rotation, if b is higher and lower than a and c, a jiggle happened. 
+	#temporarily disable player control and let the solver handle it. 
 	var a = b
 	var b = c
 	var c = rotation
@@ -29,23 +31,31 @@ func _physics_process(delta):
 	else:
 		jigglecheck = 1
 	
+	#when a collision happens, a miniscule repulsive force is applied.
 	if collided:
 		apply_force(-.2 * linear_velocity)
-	print_debug(linear_velocity)
-	prevmousepos = mousepos
+
+	#gets the vector between the current position and current mouse position.
+	#prevmousepos = mousepos
 	mousepos = get_global_mouse_position()
 	tovector = mousepos - position
-	normalizedtovector = tovector.normalized()
+	#normalizedtovector = tovector.normalized()
+
+	#this marks something as selected as long as hovered once and mouse was held down.
 	if (Input.is_action_pressed("click")):#held down first frame
 		if (firstframe and hovered):
 			selected = true
 			firstframe = false
+			print_debug(name)
 		if (selected):
-			apply_force((tovector * sensitivity * magnitude * jigglecheck)-linear_velocity, Vector2(0,0))
+			apply_force((tovector * sensitivity * jigglecheck), Vector2(0,0)) #if necessary, subtract linear_velocity to damp.
 	else:
 		apply_force(-.1 * linear_velocity)
 		firstframe = true
 		selected = false
+
+
+#all functions underneath are for input only
 
 func _on_outerwall_mouse_entered():
 	#print_debug("entered")

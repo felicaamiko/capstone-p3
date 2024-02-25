@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvon24g1yj7l1"]
+
+[ext_resource type="Script" path="res://scripts/rigid_body_2d.gd" id="1_5aomr"]
+[ext_resource type="Texture2D" uid="uid://vddnfu07bl62" path="res://icon.svg" id="2_irude"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_div62"]
+size = Vector2(128, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfro8"]
+size = Vector2(128, 128)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+mass = 0.01
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_5aomr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_div62")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(1, 2)
+texture = ExtResource("2_irude")
+
+[node name="outerwall" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="outerwall"]
+visible = false
+shape = SubResource("RectangleShape2D_cfro8")
+
+[connection signal="body_entered" from="outerwall" to="." method="_on_outerwall_body_entered"]
+[connection signal="body_exited" from="outerwall" to="." method="_on_outerwall_body_exited"]
+[connection signal="mouse_entered" from="outerwall" to="." method="_on_outerwall_mouse_entered"]
+[connection signal="mouse_exited" from="outerwall" to="." method="_on_outerwall_mouse_exited"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b44mnxki3pnyr"]
+
+[ext_resource type="Script" path="res://scripts/rigid_body_2d.gd" id="1_ytynw"]
+[ext_resource type="Texture2D" uid="uid://vddnfu07bl62" path="res://icon.svg" id="2_4wx30"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_hydh2"]
+points = PackedVector2Array(50, 64, 64, 50, 64, -50, 50, -64, -50, -64, -64, -50, -64, 50, -50, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfro8"]
+size = Vector2(256, 256)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+mass = 0.01
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_ytynw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("ConvexPolygonShape2D_hydh2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_4wx30")
+
+[node name="outerwall" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="outerwall"]
+shape = SubResource("RectangleShape2D_cfro8")
+
+[connection signal="body_entered" from="outerwall" to="." method="_on_outerwall_body_entered"]
+[connection signal="body_exited" from="outerwall" to="." method="_on_outerwall_body_exited"]
+[connection signal="mouse_entered" from="outerwall" to="." method="_on_outerwall_mouse_entered"]
+[connection signal="mouse_exited" from="outerwall" to="." method="_on_outerwall_mouse_exited"]
